@@ -1,4 +1,5 @@
 from metaflow import FlowSpec, step
+from random import randint
 
 
 class HelloFlow(FlowSpec):
@@ -25,6 +26,9 @@ class HelloFlow(FlowSpec):
         A step for metaflow to introduce itself.
 
         """
+        r = randint(0, 3)
+        if r == 0:
+            raise Exception("Random failure.")
         print("Metaflow says: Hi!")
         self.next(self.end)
 
